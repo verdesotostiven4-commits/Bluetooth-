@@ -1,0 +1,21 @@
+{
+  "name": "Bluetooth Device Demo",
+  "short_name": "Bluetooth",
+  "description": "Maqueta PWA interactiva de Bluetooth y localización simulada de AirPods.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "fullscreen",
+  "display_override": ["fullscreen", "standalone"],
+  "orientation": "portrait",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "lang": "es-EC",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
