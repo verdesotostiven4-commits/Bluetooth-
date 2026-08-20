@@ -16,233 +16,82 @@
   <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
+  <svg class="svg-sprite" aria-hidden="true">
+    <symbol id="i-back" viewBox="0 0 24 24"><path d="M15.4 4.6 8 12l7.4 7.4"/></symbol>
+    <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.8 9a2.4 2.4 0 0 1 4.6.9c0 1.8-2.4 2-2.4 3.6"/><path d="M12 17h.01"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+    <symbol id="i-headphones" viewBox="0 0 24 24"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><path d="M4 14h2.5v6H5.8A1.8 1.8 0 0 1 4 18.2zM20 14h-2.5v6h.7a1.8 1.8 0 0 0 1.8-1.8z"/></symbol>
+    <symbol id="i-device" viewBox="0 0 24 24"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M10 6h4M10 10h.01M14 10h.01M10 14h.01M14 14h.01M10 18h4"/></symbol>
+    <symbol id="i-watch" viewBox="0 0 24 24"><path d="m9 4 1-2h4l1 2M9 20l1 2h4l1-2"/><rect x="6" y="4" width="12" height="16" rx="5"/></symbol>
+    <symbol id="i-locate" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3-9 5 9 5 9-5z"/><path d="m3 12 9 5 9-5M3 16l9 5 9-5"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+    <symbol id="i-sound" viewBox="0 0 24 24"><path d="M5 10v4h4l5 4V6l-5 4z"/><path d="M17 9a4 4 0 0 1 0 6M19.5 6.5a7.7 7.7 0 0 1 0 11"/></symbol>
+    <symbol id="i-nearby" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="10"/></symbol>
+    <symbol id="i-route" viewBox="0 0 24 24"><path d="m4 16 5-10 2 6 9-4-5 10-3-5z"/></symbol>
+    <symbol id="i-more" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+  </svg>
+
   <div id="app" class="app-shell">
-    <header class="status-bar" aria-hidden="true">
-      <span id="statusTime">14:42</span>
-      <div class="status-icons">
-        <span class="bt-mini">ᛒ</span>
-        <span class="signal">▂▄▆█</span>
-        <span class="wifi">◒</span>
-        <span class="battery"><i></i><b>22</b></span>
-      </div>
-    </header>
-
     <main id="screenStack" class="screen-stack">
-      <section id="bluetoothScreen" class="screen active" aria-label="Bluetooth">
-        <div class="top-nav">
-          <button class="icon-btn ghost" data-action="back-home" aria-label="Atrás">‹</button>
-          <h1>Bluetooth</h1>
-          <button class="icon-btn ghost help-btn" aria-label="Ayuda">?</button>
-        </div>
-
-        <div class="hero-title">Bluetooth</div>
-
-        <div class="settings-card switch-row">
-          <span>Bluetooth</span>
-          <button id="bluetoothToggle" class="switch is-on" aria-label="Activar o desactivar Bluetooth"><i></i></button>
-        </div>
-
-        <div class="settings-card device-name-row">
-          <span>Nombre del dispositivo</span>
-          <div><small>Xiaomi 14T Pro</small><span class="chev">›</span></div>
-        </div>
-
+      <section id="bluetoothScreen" class="screen settings-screen active" aria-label="Bluetooth">
+        <header class="appbar collapsible" data-collapse-for="bluetoothScreen">
+          <button class="nav-icon" data-action="back-home" aria-label="Atrás"><svg><use href="#i-back"/></svg></button>
+          <strong class="collapsed-title">Bluetooth</strong>
+          <button class="nav-icon help" aria-label="Ayuda"><svg><use href="#i-help"/></svg></button>
+        </header>
+        <h1 class="large-title">Bluetooth</h1>
+        <div class="settings-card single-row"><span>Bluetooth</span><button id="bluetoothToggle" class="switch is-on" aria-label="Activar o desactivar Bluetooth"><i></i></button></div>
+        <button class="settings-card single-row device-name-row" type="button"><span>Nombre del dispositivo</span><span class="row-tail"><small>Xiaomi 14T Pro</small><svg class="chevron"><use href="#i-chevron"/></svg></span></button>
         <div id="savedDevices" class="device-list"></div>
-
-        <div class="section-label">DISPOSITIVOS DISPONIBLES</div>
-        <div class="scanner-row">
-          <div class="scanner-dot"><span></span></div>
-          <div>
-            <strong>Buscando dispositivos</strong>
-            <small>Exploración simulada</small>
-          </div>
-        </div>
-
-        <div class="section-label muted-label">Configuración adicional</div>
-        <button class="settings-card full-row plain-btn">
-          <span>Configuración adicional</span><span class="chev">›</span>
-        </button>
+        <div class="section-heading">DISPOSITIVOS DISPONIBLES</div>
+        <div class="scanner-row"><span class="scan-radar"><i></i></span><div><strong>Buscando dispositivos</strong><small>Buscando dispositivos cercanos…</small></div></div>
+        <div class="section-heading normal-case">Configuración adicional</div>
+        <button class="settings-card single-row" type="button"><span>Configuración adicional</span><svg class="chevron"><use href="#i-chevron"/></svg></button>
       </section>
 
-      <section id="airpodsScreen" class="screen" aria-label="AirPods Pro #6">
-        <div class="top-nav sticky-nav">
-          <button class="icon-btn ghost" data-action="go-bluetooth" aria-label="Atrás">‹</button>
-          <h1 class="compact-title">AirPods Pro #6</h1>
-          <span class="nav-spacer"></span>
+      <section id="airpodsScreen" class="screen settings-screen" aria-label="AirPods Pro #6">
+        <header class="appbar collapsible" data-collapse-for="airpodsScreen">
+          <button class="nav-icon" data-action="go-bluetooth" aria-label="Atrás"><svg><use href="#i-back"/></svg></button>
+          <strong class="collapsed-title">AirPods Pro #6</strong><span class="nav-icon spacer"></span>
+        </header>
+        <h1 class="large-title airpods-title">AirPods Pro #6</h1>
+        <div class="airpods-stage" aria-label="Ilustración de AirPods Pro">
+          <svg class="airpods-product" viewBox="0 0 440 300" role="img" aria-hidden="true">
+            <defs><linearGradient id="whiteShell" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff"/><stop offset=".6" stop-color="#f8f8f8"/><stop offset="1" stop-color="#e8e8ea"/></linearGradient><filter id="productShadow" x="-30%" y="-30%" width="160%" height="180%"><feDropShadow dx="0" dy="16" stdDeviation="13" flood-color="#000" flood-opacity=".45"/></filter></defs>
+            <g class="bud left-bud" filter="url(#productShadow)"><ellipse cx="150" cy="76" rx="45" ry="42" fill="url(#whiteShell)"/><ellipse cx="133" cy="70" rx="25" ry="21" fill="#f5f5f6"/><ellipse cx="119" cy="68" rx="7" ry="10" fill="#1f1f20"/><path d="M163 93c2 15 0 34-2 54l-5 53c-1 14 7 24 20 24 12 0 20-8 20-20l-1-74c-1-21-12-34-32-37z" fill="url(#whiteShell)"/><ellipse cx="179" cy="132" rx="7" ry="4" fill="#454547" opacity=".8"/></g>
+            <g class="bud right-bud" filter="url(#productShadow)"><ellipse cx="290" cy="76" rx="45" ry="42" fill="url(#whiteShell)"/><ellipse cx="307" cy="70" rx="25" ry="21" fill="#f5f5f6"/><ellipse cx="321" cy="68" rx="7" ry="10" fill="#1f1f20"/><path d="M277 93c-2 15 0 34 2 54l5 53c1 14-7 24-20 24-12 0-20-8-20-20l1-74c1-21 12-34 32-37z" fill="url(#whiteShell)"/><ellipse cx="261" cy="132" rx="7" ry="4" fill="#454547" opacity=".8"/></g>
+            <g class="case" filter="url(#productShadow)"><path d="M95 153h250v72c0 44-28 70-72 70H167c-44 0-72-26-72-70z" fill="url(#whiteShell)"/><path d="M96 154h248" stroke="#d8d8db" stroke-width="3"/><path d="M112 168c22 9 51 13 108 13s86-4 108-13" fill="none" stroke="#ededee" stroke-width="2"/><circle cx="220" cy="205" r="5" fill="#32e64d"/></g>
+          </svg>
         </div>
-
-        <div class="airpods-header">
-          <h2>AirPods Pro #6</h2>
-          <div class="airpods-art" aria-hidden="true">
-            <svg viewBox="0 0 420 290" role="img">
-              <defs>
-                <linearGradient id="caseGrad" x1="0" x2="0" y1="0" y2="1">
-                  <stop offset="0" stop-color="#ffffff"/>
-                  <stop offset="1" stop-color="#e9e9eb"/>
-                </linearGradient>
-                <filter id="softShadow" x="-30%" y="-30%" width="160%" height="180%">
-                  <feDropShadow dx="0" dy="15" stdDeviation="13" flood-color="#000" flood-opacity=".38"/>
-                </filter>
-              </defs>
-              <g class="earbuds-float" filter="url(#softShadow)">
-                <path d="M107 89c0-42 31-70 70-70 29 0 52 13 63 36 6 13 7 28 3 43-4 16-16 29-32 35-14 5-23 14-24 28l-3 45c-1 17-10 29-25 29-17 0-27-12-26-30l3-67c-18-14-29-30-29-49z" fill="url(#caseGrad)"/>
-                <ellipse cx="176" cy="83" rx="24" ry="30" fill="#f7f7f8"/>
-                <circle cx="196" cy="82" r="5" fill="#252525"/>
-                <path d="M313 89c0-42-31-70-70-70-29 0-52 13-63 36-6 13-7 28-3 43 4 16 16 29 32 35 14 5 23 14 24 28l3 45c1 17 10 29 25 29 17 0 27-12 26-30l-3-67c18-14 29-30 29-49z" fill="url(#caseGrad)"/>
-                <ellipse cx="244" cy="83" rx="24" ry="30" fill="#f7f7f8"/>
-                <circle cx="224" cy="82" r="5" fill="#252525"/>
-              </g>
-              <g class="case-rise" filter="url(#softShadow)">
-                <path d="M91 136h238v78c0 38-24 62-61 62H152c-37 0-61-24-61-62z" fill="url(#caseGrad)"/>
-                <path d="M91 136h238" stroke="#d9d9dc" stroke-width="3"/>
-                <circle cx="210" cy="177" r="5" fill="#4cff62"/>
-              </g>
-            </svg>
-          </div>
-        </div>
-
-        <div class="battery-card">
-          <div><strong>Izquierda</strong><span>—</span><div class="battery-icon"></div></div>
-          <div><strong>Derecha</strong><span>—</span><div class="battery-icon"></div></div>
-          <div><strong>Estuche</strong><span>—</span><div class="battery-icon"></div></div>
-        </div>
-
-        <div class="noise-card">
-          <button class="noise-mode active" data-mode="transparency"><span class="noise-icon">◉</span><b>Transparencia</b></button>
-          <button class="noise-mode" data-mode="cancel"><span class="noise-icon">◌</span><b>Cancelación de<br>ruido</b></button>
-          <button class="noise-mode" data-mode="off"><span class="noise-icon">○</span><b>Desactivado</b></button>
-        </div>
-
-        <div class="settings-card stacked-card">
-          <button class="detail-row disabled-row"><div><span>Renombrar</span><small>El nuevo nombre solo aparecerá en este dispositivo</small></div><div><small>AirPods Pro …</small><span class="chev">›</span></div></button>
-          <button class="detail-row"><div><span>Guía de conexión automática</span></div><span class="chev">›</span></button>
-        </div>
-
-        <div class="section-label muted-label">Funciones</div>
-        <div class="settings-card stacked-card functions-card">
-          <div class="detail-row disabled-row"><div><span>Audio dimensional</span><small>Disfrute de un sonido envolvente en audio y video compatibles</small></div><span class="switch small"><i></i></span></div>
-          <div class="detail-row disabled-row"><div><span>Detección en oído</span><small>Pausar el audio cuando se quitan los audífonos y reanudar automáticamente al colocarlos</small></div><span class="switch small is-on dim-on"><i></i></span></div>
-          <div class="detail-row disabled-row"><div><span>Reproduzca sonido para localizar</span><small>Reproduzca un sonido fuerte en los audífonos emparejados</small></div><span class="switch small"><i></i></span></div>
-          <div class="detail-row disabled-row"><div><span>Mantenga un volumen consistente</span></div><span class="switch small"><i></i></span></div>
-        </div>
-
-        <div class="settings-card stacked-card connectivity-card">
-          <div class="detail-row interactive-row"><div><span>Audio de llamadas</span><small>Usado para audio del teléfono</small></div><button class="switch small is-on interactive-switch" aria-label="Audio de llamadas"><i></i></button></div>
-          <div class="detail-row interactive-row"><div><span>Audio multimedia</span><small>Usado para audio multimedia</small></div><button class="switch small is-on interactive-switch" aria-label="Audio multimedia"><i></i></button></div>
-          <div class="detail-row interactive-row"><div><span>Acceso a historial de llamadas y contactos</span><small>Usado para compartir contactos</small></div><button class="switch small is-on interactive-switch" aria-label="Acceso a contactos"><i></i></button></div>
-        </div>
-
-        <button id="findDeviceBtn" class="settings-card full-row plain-btn find-row">
-          <span>Mostrar en Encontrar dispositivo</span><span class="chev">›</span>
-        </button>
-
-        <div class="settings-card stacked-card danger-card">
-          <button class="action-row blue-action" id="disconnectBtn">Desconectar</button>
-          <button class="action-row red-action" id="unpairBtn">Desemparejar</button>
-        </div>
+        <div class="battery-card"><div><strong>Izquierda</strong><span>—</span><i class="mini-battery"></i></div><div><strong>Derecha</strong><span>—</span><i class="mini-battery"></i></div><div><strong>Estuche</strong><span>—</span><i class="mini-battery"></i></div></div>
+        <div class="noise-card"><button class="noise-mode active" data-mode="transparency"><span class="noise-glyph ring-dot"></span><b>Transparencia</b></button><button class="noise-mode" data-mode="cancel"><span class="noise-glyph dotted-ring"></span><b>Cancelación<br>de ruido</b></button><button class="noise-mode" data-mode="off"><span class="noise-glyph empty-ring"></span><b>Desactivado</b></button></div>
+        <div class="settings-card group-card"><button class="detail-row disabled" type="button"><span><b>Renombrar</b><small>El nuevo nombre solo aparecerá en este dispositivo</small></span><span class="row-tail"><small>AirPods Pro…</small><svg class="chevron"><use href="#i-chevron"/></svg></span></button><button class="detail-row" type="button"><span><b>Guía de conexión automática</b></span><svg class="chevron"><use href="#i-chevron"/></svg></button></div>
+        <div class="section-heading normal-case">Funciones</div>
+        <div class="settings-card group-card function-card"><div class="detail-row disabled"><span><b>Audio dimensional</b><small>Disfrute de un sonido envolvente en audio y video compatibles</small></span><span class="switch small"><i></i></span></div><div class="detail-row disabled"><span><b>Detección en oído</b><small>Pausar el audio al quitarse los audífonos y reanudar al colocarlos</small></span><span class="switch small is-on dimmed"><i></i></span></div><div class="detail-row disabled"><span><b>Reproduzca sonido para localizar</b><small>Reproduzca un sonido en los audífonos emparejados</small></span><span class="switch small"><i></i></span></div><div class="detail-row disabled"><span><b>Mantenga un volumen consistente</b></span><span class="switch small"><i></i></span></div></div>
+        <div class="settings-card group-card connectivity-card"><div class="detail-row interactive-row"><span><b>Audio de llamadas</b><small>Usado para audio del teléfono</small></span><button class="switch small is-on interactive-switch" aria-label="Audio de llamadas"><i></i></button></div><div class="detail-row interactive-row"><span><b>Audio multimedia</b><small>Usado para audio multimedia</small></span><button class="switch small is-on interactive-switch" aria-label="Audio multimedia"><i></i></button></div><div class="detail-row interactive-row"><span><b>Acceso a historial de llamadas y contactos</b><small>Usado para compartir contactos</small></span><button class="switch small is-on interactive-switch" aria-label="Acceso a contactos"><i></i></button></div></div>
+        <button id="findDeviceBtn" class="settings-card single-row find-device-row" type="button"><span>Mostrar en Encontrar dispositivo</span><svg class="chevron"><use href="#i-chevron"/></svg></button>
+        <div class="settings-card group-card danger-card"><button class="action-row blue" id="disconnectBtn">Desconectar</button><button class="action-row red" id="unpairBtn">Desemparejar</button></div>
       </section>
 
       <section id="findScreen" class="screen find-screen" aria-label="Encontrar AirPods">
-        <div class="map-canvas" id="mapCanvas" aria-label="Mapa simulado">
-          <svg class="fake-map" viewBox="0 0 1000 1700" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-            <rect width="1000" height="1700" fill="#171a1e"/>
-            <g stroke="#2a2f35" stroke-width="16" fill="none" stroke-linecap="round">
-              <path d="M-80 250 C170 360, 260 310, 420 190 S760 80, 1080 180"/>
-              <path d="M-40 730 C170 620, 290 690, 440 810 S710 940, 1080 780"/>
-              <path d="M80 1540 C150 1330, 300 1210, 510 1215 S820 1370, 1030 1240"/>
-              <path d="M210 -100 C300 200, 250 430, 320 610 S520 900, 470 1120 S400 1450, 480 1770"/>
-              <path d="M760 -80 C690 230, 760 420, 690 650 S600 1050, 720 1280 S820 1500, 780 1760"/>
-            </g>
-            <g stroke="#343a41" stroke-width="5" fill="none" stroke-linecap="round" opacity=".9">
-              <path d="M50 420 L930 420"/><path d="M70 560 L900 560"/><path d="M90 1040 L930 1040"/><path d="M120 1160 L900 1160"/>
-              <path d="M110 80 L110 1580"/><path d="M580 40 L580 1660"/><path d="M870 70 L870 1580"/>
-            </g>
-            <g fill="#24292f" opacity=".8">
-              <rect x="120" y="300" width="160" height="70" rx="14"/><rect x="530" y="240" width="130" height="90" rx="14"/><rect x="710" y="500" width="170" height="90" rx="14"/>
-              <rect x="180" y="860" width="190" height="100" rx="14"/><rect x="590" y="900" width="200" height="80" rx="14"/><rect x="250" y="1280" width="130" height="100" rx="14"/>
-            </g>
-          </svg>
-
-          <div class="uncertainty-ring point-1-ring"></div>
-          <button class="map-pin point-1" data-point="1" aria-label="Punto 1"><span>1</span></button>
-          <div class="uncertainty-ring point-2-ring"></div>
-          <button class="map-pin point-2" data-point="2" aria-label="Punto 2"><span>2</span></button>
-          <div class="uncertainty-ring point-3-ring is-current"></div>
-          <button class="map-pin point-3 is-current" data-point="3" aria-label="Punto 3"><span class="airpod-dot">●</span></button>
-
-          <div class="location-pulse" id="locationPulse"></div>
-        </div>
-
-        <div class="find-topbar">
-          <button class="circle-btn" data-action="go-airpods" aria-label="Atrás">‹</button>
-          <div class="find-title-wrap">
-            <strong>AirPods Pro #6</strong>
-            <small id="findSubtitle">Sin conexión · ubicación aproximada</small>
-          </div>
-          <button class="circle-btn more-btn" id="moreFindBtn" aria-label="Más opciones">•••</button>
-        </div>
-
-        <div class="map-controls">
-          <button class="circle-btn" id="recenterBtn" aria-label="Centrar">⌖</button>
-          <button class="circle-btn" id="layersBtn" aria-label="Capas">▱</button>
-        </div>
-
-        <section class="find-sheet" id="findSheet">
-          <div class="sheet-handle"></div>
-          <div class="device-summary">
-            <div class="mini-airpods" aria-hidden="true">◉◉</div>
-            <div>
-              <h2>AirPods Pro #6</h2>
-              <p><span class="status-dot offline"></span>Sin conexión directa</p>
-              <small id="lastSeenText">Detectado hoy a las 13:41 · Punto 3</small>
-            </div>
-          </div>
-
-          <div class="location-status">
-            <div><span>Ubicación aproximada</span><small>Detectada por la red de dispositivos cercanos</small></div>
-            <strong id="locationAge">hace 1 h</strong>
-          </div>
-
-          <div class="find-actions">
-            <button id="soundBtn"><span>◖</span><b>Reproducir<br>sonido</b></button>
-            <button id="nearbyBtn"><span>◎</span><b>Buscar<br>cerca</b></button>
-            <button id="directionsBtn"><span>➤</span><b>Indicaciones</b></button>
-          </div>
-
-          <button id="historyToggle" class="history-header">
-            <div><strong>Historial de detecciones</strong><small>Desde el domingo 16 de agosto</small></div><span id="historyChevron">⌃</span>
-          </button>
-          <div id="timeline" class="timeline"></div>
-
-          <div class="privacy-note">Las ubicaciones mostradas son aproximadas. Una detección indica que un dispositivo cercano reportó la presencia de los AirPods; no confirma que hayan sido utilizados.</div>
-        </section>
-
-        <div id="syncOverlay" class="sync-overlay hidden" aria-live="polite">
-          <div class="sync-card">
-            <div class="radar-loader"><i></i><i></i><i></i><span>◉</span></div>
-            <h3 id="syncTitle">Buscando AirPods…</h3>
-            <p id="syncText">Consultando la última ubicación disponible</p>
-            <div class="sync-progress"><span id="syncProgress"></span></div>
-          </div>
-        </div>
-
-        <div id="nearbyOverlay" class="nearby-overlay hidden">
-          <button class="circle-btn nearby-close" id="closeNearby">×</button>
-          <div class="nearby-content">
-            <small>BUSCAR CERCA</small>
-            <h2>AirPods Pro #6</h2>
-            <div class="proximity-radar"><i></i><i></i><i></i><span>◉</span></div>
-            <h3 id="nearbyStatus">Buscando señal…</h3>
-            <p id="nearbyText">Muévete por la zona para intentar establecer una conexión directa.</p>
-          </div>
-        </div>
+        <div id="mapViewport" class="map-viewport"><div id="mapWorld" class="map-world">
+          <svg class="map-art" viewBox="0 0 1200 1700" preserveAspectRatio="none" aria-hidden="true"><defs><pattern id="blocks" width="120" height="120" patternUnits="userSpaceOnUse"><rect width="120" height="120" fill="#1c2326"/><rect x="8" y="8" width="104" height="104" rx="10" fill="#20282c"/></pattern><filter id="routeGlow"><feGaussianBlur stdDeviation="5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><rect width="1200" height="1700" fill="#161d20"/><rect width="1200" height="1700" fill="url(#blocks)" opacity=".55"/><g class="park-fill"><path d="M700 190c160-60 340 18 420 135l-35 250c-110 42-244 32-390-32-70-118-65-230 5-353z"/><path d="M85 1050c160-95 320-60 420 35l-20 295c-138 76-290 60-430-28z"/></g><g class="minor-roads" fill="none" stroke-linecap="round"><path d="M-80 270C180 330 305 320 440 210S830 80 1280 210"/><path d="M-40 610C210 530 360 585 520 700S850 860 1240 700"/><path d="M-50 1020C190 930 380 1010 520 1120S840 1280 1240 1110"/><path d="M80 1570C180 1390 350 1320 570 1330S940 1480 1230 1390"/><path d="M180-80C250 220 245 390 300 610S470 980 410 1240 365 1540 450 1780"/><path d="M785-80C720 240 795 440 720 690S640 1060 760 1290 880 1530 830 1770"/></g><g class="major-roads" fill="none" stroke-linecap="round"><path d="M-80 465C220 430 455 480 720 470S980 410 1280 430"/><path d="M-70 875C210 815 410 860 610 910S940 995 1280 920"/><path d="M565-100C545 260 570 510 600 760S610 1220 650 1800"/></g><g class="road-labels"><text x="450" y="452">Vía principal</text><text x="775" y="900">Av. Central</text><text x="603" y="745" transform="rotate(84 603 745)">Conexión norte-sur</text><text x="835" y="315">Área verde</text><text x="205" y="1220">Área residencial</text></g><path id="routePath" class="route-path hidden" d="M185 1470 C300 1320 405 1200 520 1115 S760 920 890 760 S1010 600 970 470"/></svg>
+          <div class="map-accuracy p1-accuracy"></div><button class="map-marker p1" data-point="1"><span>1</span></button><div class="map-accuracy p2-accuracy"></div><button class="map-marker p2" data-point="2"><span>2</span></button><div class="map-accuracy p3-accuracy active"></div><button class="map-marker p3 active" data-point="3"><span class="earbuds-pin">●</span></button><div id="userMarker" class="user-marker"><i></i></div>
+        </div></div>
+        <header class="find-header"><button class="glass-btn" data-action="go-airpods" aria-label="Atrás"><svg><use href="#i-back"/></svg></button><div><strong>AirPods Pro #6</strong><small id="findHeaderStatus">Sin conexión · ubicación aproximada</small></div><button class="glass-btn" id="moreFindBtn" aria-label="Más"><svg><use href="#i-more"/></svg></button></header>
+        <aside class="map-tools" aria-label="Herramientas del mapa"><button class="glass-btn" id="recenterBtn" aria-label="Centrar"><svg><use href="#i-locate"/></svg></button><div class="zoom-cluster"><button id="zoomInBtn" aria-label="Acercar"><svg><use href="#i-plus"/></svg></button><button id="zoomOutBtn" aria-label="Alejar"><svg><use href="#i-minus"/></svg></button></div><button class="glass-btn" id="layersBtn" aria-label="Cambiar vista"><svg><use href="#i-layers"/></svg></button></aside>
+        <div id="routeChip" class="route-chip hidden"><strong>Ruta simulada</strong><span>7 min · 2,1 km</span><button id="closeRoute">×</button></div>
+        <section id="findSheet" class="find-sheet compact"><button id="sheetHandle" class="sheet-handle" aria-label="Expandir panel"><i></i></button><div class="device-summary"><div class="mini-case"><span></span></div><div class="summary-copy"><h2>AirPods Pro #6</h2><p><i class="offline-dot"></i>Sin conexión directa</p><small id="lastSeenText">Última señal disponible</small></div></div><div class="day-strip" id="dayStrip"></div><div class="location-card"><div><strong id="selectedPointTitle">Punto 3</strong><small id="selectedPointDetail">Ubicación aproximada · red de detección</small></div><span id="locationAge">—</span></div><div class="find-actions"><button id="soundBtn"><span><svg><use href="#i-sound"/></svg></span><b>Reproducir sonido</b></button><button id="nearbyBtn"><span><svg><use href="#i-nearby"/></svg></span><b>Buscar cerca</b></button><button id="directionsBtn"><span><svg><use href="#i-route"/></svg></span><b>Indicaciones</b></button></div><button id="historyToggle" class="history-toggle"><span><strong>Historial de detecciones</strong><small>Actividad registrada desde el domingo</small></span><svg class="chevron down"><use href="#i-chevron"/></svg></button><div id="timeline" class="timeline"></div><p class="map-note">Las detecciones son aproximadas y no indican que los AirPods hayan sido utilizados. Una señal puede provenir de un dispositivo cercano.</p></section>
       </section>
     </main>
-
-    <div id="toast" class="toast" role="status"></div>
-    <button id="installBtn" class="install-pill hidden">Instalar app</button>
+    <div id="syncOverlay" class="overlay hidden" aria-live="polite"><div class="sync-card"><div class="sync-orbit"><span></span><i></i></div><h2 id="syncTitle">Buscando AirPods…</h2><p id="syncText">Consultando la última ubicación disponible</p><div class="progress"><i id="syncProgress"></i></div></div></div>
+    <div id="nearbyOverlay" class="overlay hidden"><div class="nearby-card"><button id="closeNearby" class="overlay-close" aria-label="Cerrar"><svg><use href="#i-x"/></svg></button><div class="nearby-radar"><span></span><i></i><b></b></div><h2 id="nearbyStatus">Buscando señal…</h2><p id="nearbyText">Muévete por la zona para intentar establecer una conexión directa.</p></div></div>
+    <div id="modal" class="modal hidden" role="dialog" aria-modal="true"><div class="modal-card"><h3 id="modalTitle">Información</h3><p id="modalText"></p><button id="modalClose">Aceptar</button></div></div>
+    <div id="toast" class="toast" role="status"></div><button id="installBtn" class="install-btn hidden">Instalar Bluetooth</button>
   </div>
-
-  <script src="/app.js"></script>
+  <script src="/app.js" defer></script>
 </body>
 </html>

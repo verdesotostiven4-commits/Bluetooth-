@@ -1,24 +1,15 @@
-# Bluetooth PWA Demo
+# Bluetooth — PWA de demostración
 
-Maqueta interactiva para una presentación académica. Simula una pantalla de Bluetooth, la ficha de unos AirPods y una experiencia de localización/historial de detecciones.
+Maqueta PWA para una presentación académica. Replica de forma interactiva una pantalla de Bluetooth, la ficha de unos AirPods Pro y una experiencia de “Encontrar dispositivo”.
 
-## Importante
+## Características
+- Interfaz móvil optimizada para Android/HyperOS.
+- Usa la barra de estado real del teléfono; no dibuja hora o batería falsas.
+- Pantalla de AirPods con controles y animaciones.
+- Mapa vectorial local e interactivo: arrastrar, zoom, doble toque, marcadores, centrado y ruta simulada.
+- Cronología de detecciones del 16 al 20 de agosto de 2026.
+- Modo “Buscar cerca”, sonido e indicaciones simuladas.
+- Instalación PWA y soporte offline.
 
-- No usa Bluetooth real.
-- No usa GPS real.
-- No recopila ni envía ubicaciones.
-- Los tres puntos del mapa son posiciones visuales ficticias dentro de la maqueta.
-- La cronología está preconfigurada para el 16–20 de agosto de 2026.
-
-## Flujo
-
-1. Bluetooth
-2. AirPods Pro #6
-3. Mostrar en Encontrar dispositivo
-4. Sincronización simulada
-5. Mapa con Punto 1 / Punto 2 / Punto 3
-6. Historial de detecciones y búsqueda cercana simulada
-
-## Despliegue
-
-Es un sitio estático: puede importarse directamente en Vercel sin comando de build.
+## Privacidad
+No usa Bluetooth real, GPS real, APIs de rastreo ni recopila ubicación. Las posiciones del mapa son puntos visuales simulados. Las ubicaciones privadas compartidas para el ejercicio no se publican en este repositorio.
