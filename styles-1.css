@@ -1,0 +1,69 @@
+:root{
+      --bg:#000;
+      --card:#1b1b1f;
+      --card2:#222328;
+      --stroke:rgba(255,255,255,.06);
+      --soft:rgba(255,255,255,.08);
+      --text:#fff;
+      --muted:#a5a7af;
+      --muted2:#6f7280;
+      --blue:#2f8cff;
+      --blue2:#58a4ff;
+      --danger:#ff5f5f;
+      --success:#39dc57;
+      --radius:28px;
+      --radius-sm:22px;
+      --status-h: 52px;
+    }
+    *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+    html,body{margin:0;height:100%;overflow:hidden;background:var(--bg);color:var(--text);font-family:'Inter',system-ui,-apple-system,sans-serif}
+    body{touch-action:manipulation}
+    button,input{font:inherit}
+    .screen{position:absolute;inset:0;overflow:hidden;background:#000;display:none}
+    .screen.active{display:block}
+    .safe-top{padding-top:calc(env(safe-area-inset-top,0px) + 14px)}
+    .safe-bottom{padding-bottom:calc(env(safe-area-inset-bottom,0px) + 18px)}
+    .scroll{height:100%;overflow:auto;-webkit-overflow-scrolling:touch;padding:0 18px 28px}
+    .topbar{position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;padding:10px 18px 8px;background:rgba(0,0,0,.78);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.03)}
+    .topbar .center-title{font-size:18px;font-weight:700}
+    .nav-btn,.glass-btn{width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.06);background:rgba(26,27,31,.62);display:grid;place-items:center;color:#fff;backdrop-filter:blur(18px);box-shadow:0 8px 18px rgba(0,0,0,.18)}
+    .nav-btn svg,.glass-btn svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+    .large-title{font-size:58px;line-height:.98;font-weight:500;letter-spacing:-.04em;margin:12px 0 18px;padding:0 6px}
+    .card{background:linear-gradient(180deg,#1b1b1f,#191a1f);border:1px solid var(--stroke);border-radius:28px;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+    .row-card{display:flex;align-items:center;justify-content:space-between;padding:18px 18px;margin:12px 0}
+    .row-card span:first-child{font-size:22px}
+    .switch{width:72px;height:40px;border:none;border-radius:999px;background:#43454e;position:relative;transition:.25s}
+    .switch i{position:absolute;top:4px;left:4px;width:32px;height:32px;border-radius:50%;background:#fff;transition:.25s;box-shadow:0 4px 14px rgba(0,0,0,.35)}
+    .switch.on{background:var(--blue)} .switch.on i{left:36px}
+    .tail{display:flex;align-items:center;gap:10px;color:#90939d;font-size:17px}
+    .chev{width:20px;height:20px;border-right:2px solid #797b83;border-bottom:2px solid #797b83;transform:rotate(-45deg)}
+    .heading{padding:16px 8px 6px;color:#6b6d76;font-size:17px;letter-spacing:.02em}
+    .device-list{display:flex;flex-direction:column;gap:14px}
+    .device-item{display:flex;align-items:center;gap:14px;padding:19px 18px}
+    .device-icon{width:42px;height:42px;display:grid;place-items:center;color:#d8d9dd;opacity:.95}
+    .device-icon svg{width:31px;height:31px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+    .device-copy{flex:1;min-width:0}
+    .device-copy b{display:block;font-size:23px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .device-copy small{display:block;margin-top:3px;color:#8d8f98;font-size:18px}
+    .scanner{display:flex;align-items:center;gap:14px;padding:18px 10px 6px;color:#cfd1d9}
+    .scanner b{display:block;font-size:18px}.scanner small{display:block;color:#72757e;font-size:16px;margin-top:3px}
+    .radar{width:42px;height:42px;border-radius:50%;position:relative;background:rgba(47,140,255,.08);display:grid;place-items:center}
+    .radar:before,.radar:after{content:"";position:absolute;border:1px solid rgba(86,161,255,.35);border-radius:50%}
+    .radar:before{inset:8px;animation:pulse 1.8s infinite}.radar:after{inset:2px;animation:pulse 1.8s infinite .35s}.radar i{width:7px;height:7px;border-radius:50%;background:var(--blue)}
+    @keyframes pulse{0%{transform:scale(.75);opacity:.15}70%{transform:scale(1.06);opacity:.55}100%{transform:scale(1.2);opacity:0}}
+
+    /* AirPods */
+    .airpods-screen .scroll{padding-bottom:38px}
+    .airpods-stage{margin:0 0 8px;padding:2px 0 2px;display:grid;place-items:center;min-height:190px;position:relative;overflow:hidden}
+    .airpods-stage:before{content:"";position:absolute;inset:26px 40px;background:radial-gradient(circle at 50% 40%, rgba(255,255,255,.05), rgba(255,255,255,0) 68%);filter:blur(18px)}
+    .airpods-img-wrap{position:relative;z-index:2;transform-origin:center bottom;will-change:transform,opacity;animation:floatHero 5.8s ease-in-out infinite}
+    .airpods-img{width:min(44vw,172px);max-width:172px;height:auto;display:block;object-fit:contain;image-rendering:auto;filter:drop-shadow(0 10px 18px rgba(0,0,0,.22))}
+    @keyframes enterHero{0%{opacity:0;transform:translateY(22px) scale(.92)}55%{opacity:1;transform:translateY(-2px) scale(1.012)}100%{opacity:1;transform:translateY(0) scale(1)}}
+    @keyframes floatHero{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(0,-4px,0)}}
+    @keyframes softEnter{0%{opacity:0;transform:translateY(18px) scale(.94)}62%{opacity:1;transform:translateY(-2px) scale(1.01)}100%{opacity:1;transform:translateY(0) scale(1)}}
+    @keyframes fadeRise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+    .airpods-screen.reveal .airpods-img-wrap{animation:softEnter .72s cubic-bezier(.18,.82,.22,1) both, floatHero 5.8s ease-in-out .82s infinite}
+    .airpods-screen.reveal .triple{animation:fadeRise .48s ease .14s both}
+    .airpods-screen.reveal .modes{animation:fadeRise .5s ease .22s both}
+    .airpods-screen.reveal .group{animation:fadeRise .52s ease .30s both}
+    .triple{display:grid;grid-template-columns:repeat(3,1fr);gap:0;padding:10px 8px}

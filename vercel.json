@@ -1,13 +1,8 @@
 {
-  "cleanUrls": true,
-  "trailingSlash": false,
-  "headers": [
+  "rewrites": [
     {
-      "source": "/sw.js",
-      "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" },
-        { "key": "Service-Worker-Allowed", "value": "/" }
-      ]
+      "source": "/pwa-icon.jpg",
+      "destination": "https://cdn.phototourl.com/free/2026-08-21-72b8b24a-7244-46a1-892b-851fb6d47d19.jpg"
     }
   ]
 }
