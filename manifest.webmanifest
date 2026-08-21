@@ -10,6 +10,10 @@
   "theme_color": "#000000",
   "orientation": "portrait",
   "icons": [
-    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+    {
+      "src": "https://cdn.phototourl.com/free/2026-08-21-745fc495-e3b2-47d2-b864-5acdf62e7b60.jpg",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
   ]
 }
