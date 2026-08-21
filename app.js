@@ -1,1 +1,1 @@
-(()=>{const files=['/app-1.js','/app-2.js','/app-3.js'];let i=0;const next=()=>{if(i>=files.length)return;const s=document.createElement('script');s.src=files[i++];s.onload=next;s.onerror=()=>console.error('Bluetooth module load failed');document.head.appendChild(s)};next()})();
+(()=>{const files=['/app-1.js','/app-2.js','/app-3.js','/polish.js'];let i=0;const next=()=>{if(i>=files.length)return;const s=document.createElement('script');s.src=files[i++];s.onload=next;s.onerror=()=>console.error('Bluetooth module load failed');document.head.appendChild(s)};next()})();
